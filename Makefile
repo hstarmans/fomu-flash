@@ -43,9 +43,6 @@ ALL        = all
 TARGET     = $(PACKAGE)
 CLEAN      = clean
 
-.PHONY: install
-install: 
-	install -m 755 fomu-flash /usr/local/bin
 $(ALL): $(TARGET)
 
 $(OBJECTS): | $(OBJ_DIR)
@@ -74,6 +71,10 @@ $(OBJ_DIR)/%.o: %.cpp
 $(OBJ_DIR)/%.o: %.S
 	$(QUIET) echo "  AS       $<	$(notdir $@)"
 	$(QUIET) $(CC) -x assembler-with-cpp -c $< $(CFLAGS) -o $@ -MMD
+
+.PHONY: install
+install: 
+	install -m 755 fomu-flash /usr/local/bin
 
 .PHONY: clean
 
