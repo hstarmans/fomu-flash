@@ -43,6 +43,9 @@ ALL        = all
 TARGET     = $(PACKAGE)
 CLEAN      = clean
 
+.PHONY: install
+install: 
+	install -m 755 fomu-flash /usr/local/bin
 $(ALL): $(TARGET)
 
 $(OBJECTS): | $(OBJ_DIR)
